@@ -45,7 +45,7 @@ module.exports.registerUserCtrl = asyncHandler(async (req, res) => {
 
 /**-------------------------------------
  * @des     Login New User
- * @route  /api/auth/loin
+ * @route  /api/auth/login
  * @method  POST
  * @access  public
  --------------------------------------- */
