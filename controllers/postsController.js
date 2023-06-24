@@ -175,7 +175,7 @@ module.exports.updatePostCtrl = asyncHandler(async (req, res) => {
       },
     },
     { new: true }
-  );
+  ).populate("user", ["-password"]);
 
   // 5. send response to client
   res.status(200).json(updatedPost);
@@ -214,7 +214,7 @@ module.exports.updatePostImageCtrl = asyncHandler(async (req, res) => {
   const result = await cloudinaryUploadImage(imagePath);
 
   // 6. update image field in th DB
-  const updatedPost = await Post.findOneAndUpdate(
+  const updatedPost = await Post.findByIdAndUpdate(
     req.params.id,
     {
       $set: {

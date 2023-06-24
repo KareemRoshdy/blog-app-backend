@@ -9,7 +9,7 @@ const PostSchema = new mongoose.Schema(
       required: true,
       trim: true,
       minlength: 2,
-      maxlength: 100,
+      maxlength: 200,
     },
     description: {
       type: String,
@@ -60,7 +60,7 @@ const Post = mongoose.model("Post", PostSchema);
 // Validate Create Post
 const validateCreatePost = (obj) => {
   const schema = Joi.object({
-    title: Joi.string().trim().min(2).max(10).required(),
+    title: Joi.string().trim().min(2).max(200).required(),
     description: Joi.string().trim().min(10).required(),
     category: Joi.string().trim().required(),
   });
@@ -70,7 +70,7 @@ const validateCreatePost = (obj) => {
 // Validate Update Post
 const validateUpdatePost = (obj) => {
   const schema = Joi.object({
-    title: Joi.string().trim().min(2).max(100),
+    title: Joi.string().trim().min(2).max(200),
     description: Joi.string().trim().min(10),
     category: Joi.string().trim(),
   });

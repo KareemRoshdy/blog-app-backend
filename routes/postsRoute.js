@@ -29,7 +29,7 @@ router
   .delete(validateObjectId, verifyToken, deletePostCtrl)
   .put(validateObjectId, verifyToken, updatePostCtrl);
 
-// /api/posts/upload-image/:id
+// /api/posts/update-image/:id
 router
   .route("/update-image/:id")
   .put(
@@ -39,7 +39,7 @@ router
     updatePostImageCtrl
   );
 
-// /api/posts/likes/:id
-router.route("/likes/:id").put(validateObjectId, verifyToken, toggleLikeCtrl);
+// /api/posts/like/:id
+router.route("/like/:id").put(validateObjectId, verifyToken, toggleLikeCtrl);
 
 module.exports = router;
