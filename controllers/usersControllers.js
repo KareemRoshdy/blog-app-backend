@@ -67,7 +67,9 @@ module.exports.updateUserProfileCtrl = asyncHandler(async (req, res) => {
       },
     },
     { new: true }
-  ).select("-password");
+  )
+    .select("-password")
+    .populate("posts");
 
   res.status(200).json(updatedUser);
 });
@@ -155,7 +157,9 @@ module.exports.deleteUserProfileCtrl = asyncHandler(async (req, res) => {
   }
 
   // 5. Delete the profile picture from cloudinary
-  await cloudinaryRemoveImage(user.profilePhoto.publicId);
+  if (user.profilePhoto.publicId !== null) {
+    await cloudinaryRemoveImage(user.profilePhoto.publicId);
+  }
 
   // 6. Delete user posts & comments
   await Post.deleteMany({ user: user._id });
