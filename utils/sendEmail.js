@@ -21,6 +21,6 @@ module.exports = async (userEmail, subject, htmlTemplate) => {
     console.log("Email Sent: " + info.response);
   } catch (error) {
     console.log(error);
-    throw new Error("Internal Server Error [Nodemailer");
+    throw new Error("Internal Server Error [Nodemailer]");
   }
 };
